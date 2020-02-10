@@ -89,7 +89,7 @@ class Rally(base.WorkloadBase):
             cmd = "source {}; ".format(get_workload_venv('rally', True))
         else:
             cmd = "source {}; ".format(get_workload_venv('rally-ovs', True))
-        cmd += "rally task report --uuid {} --out {}.html".format(
+        cmd += "rally task report {} --out {}.html".format(
             all_task_ids, test_name)
         return self.tools.run_cmd(cmd)['stdout']
 
@@ -98,7 +98,7 @@ class Rally(base.WorkloadBase):
             cmd = "source {}; ".format(get_workload_venv('rally', True))
         else:
             cmd = "source {}; ".format(get_workload_venv('rally-ovs', True))
-        cmd += "rally task results --uuid {}".format(task_id)
+        cmd += "rally task results {}".format(task_id)
         return self.tools.run_cmd(cmd)['stdout']
 
     def gen_scenario_json_file(self, task_id, test_name):
@@ -106,7 +106,7 @@ class Rally(base.WorkloadBase):
             cmd = "source {}; ".format(get_workload_venv('rally', True))
         else:
             cmd = "source {}; ".format(get_workload_venv('rally-ovs', True))
-        cmd += "rally task results --uuid {} > {}.json".format(task_id, test_name)
+        cmd += "rally task results {} > {}.json".format(task_id, test_name)
         return self.tools.run_cmd(cmd)['stdout']
 
     def rally_metadata(self, result, meta):
