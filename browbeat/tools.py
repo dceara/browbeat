@@ -63,6 +63,8 @@ class Tools(object):
         """
         if workload["type"] == "rally":
             workloads = rally.Rally(self.config, result_dir_ts)
+        elif workload["type"] == "rally-ovs":
+            workloads = rally.Rally(self.config, result_dir_ts, openstack=False)
         elif workload["type"] == "shaker":
             workloads = shaker.Shaker(self.config, result_dir_ts)
         else:

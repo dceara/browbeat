@@ -33,9 +33,15 @@ class Rally(base.WorkloadBase):
         self.logger = logging.getLogger('browbeat.rally')
         self.config = config
         self.result_dir_ts = result_dir_ts
+<<<<<<< HEAD:browbeat/workloads/rally.py
+        self.tools = browbeat.tools.Tools(self.config)
+||||||| merged common ancestors
+        self.tools = tools.Tools(self.config)
+=======
         if not openstack:
             self.openstack = False
-        self.tools = browbeat.tools.Tools(self.config)
+        self.tools = tools.Tools(self.config)
+>>>>>>> 07070f3e3c1a1e48e65cecf2d80658a03c5887bb:browbeat/rally.py
         self.grafana = grafana.Grafana(self.config)
         self.elastic = elastic.Elastic(self.config, self.__class__.__name__.lower())
 
@@ -79,34 +85,65 @@ class Rally(base.WorkloadBase):
         return (from_time, to_time)
 
     def get_task_id(self, test_name):
+<<<<<<< HEAD:browbeat/workloads/rally.py
         cmd = "grep \"rally task report [a-z0-9\\-]* --out\" {}.log | awk '{{print $4}}'".format(
+||||||| merged common ancestors
+        cmd = "grep \"rally task report [a-z0-9\-]* --out\" {}.log | awk '{{print $4}}'".format(
+=======
+
+        cmd = "grep \"rally task report [a-z0-9\-]* --out\" {}.log | awk '{{print $4}}'".format(
+>>>>>>> 07070f3e3c1a1e48e65cecf2d80658a03c5887bb:browbeat/rally.py
             test_name)
         return self.tools.run_cmd(cmd)['stdout']
 
     def gen_scenario_html(self, task_ids, test_name):
         all_task_ids = ' '.join(task_ids)
+<<<<<<< HEAD:browbeat/workloads/rally.py
+        cmd = "source {}; ".format(get_workload_venv('rally', True))
+        cmd += "rally task report --uuid {} --out {}.html".format(
+||||||| merged common ancestors
+        cmd = "source {}; ".format(get_workload_venv('rally', True))
+        cmd += "rally task report --task {} --out {}.html".format(
+=======
         if self.openstack:
             cmd = "source {}; ".format(get_workload_venv('rally', True))
         else:
             cmd = "source {}; ".format(get_workload_venv('rally-ovs', True))
-        cmd += "rally task report --uuid {} --out {}.html".format(
+        cmd += "rally task report --task {} --out {}.html".format(
+>>>>>>> 07070f3e3c1a1e48e65cecf2d80658a03c5887bb:browbeat/rally.py
             all_task_ids, test_name)
         return self.tools.run_cmd(cmd)['stdout']
 
     def gen_scenario_json(self, task_id):
+<<<<<<< HEAD:browbeat/workloads/rally.py
+        cmd = "source {}; ".format(get_workload_venv('rally', True))
+        cmd += "rally task results --uuid {}".format(task_id)
+||||||| merged common ancestors
+        cmd = "source {}; ".format(get_workload_venv('rally', True))
+        cmd += "rally task results {}".format(task_id)
+=======
         if self.openstack:
             cmd = "source {}; ".format(get_workload_venv('rally', True))
         else:
             cmd = "source {}; ".format(get_workload_venv('rally-ovs', True))
-        cmd += "rally task results --uuid {}".format(task_id)
+        cmd += "rally task results {}".format(task_id)
+>>>>>>> 07070f3e3c1a1e48e65cecf2d80658a03c5887bb:browbeat/rally.py
         return self.tools.run_cmd(cmd)['stdout']
 
     def gen_scenario_json_file(self, task_id, test_name):
+<<<<<<< HEAD:browbeat/workloads/rally.py
+        cmd = "source {}; ".format(get_workload_venv('rally', True))
+        cmd += "rally task results --uuid {} > {}.json".format(task_id, test_name)
+||||||| merged common ancestors
+        cmd = "source {}; ".format(get_workload_venv('rally', True))
+        cmd += "rally task results {} > {}.json".format(task_id, test_name)
+=======
         if self.openstack:
             cmd = "source {}; ".format(get_workload_venv('rally', True))
         else:
             cmd = "source {}; ".format(get_workload_venv('rally-ovs', True))
-        cmd += "rally task results --uuid {} > {}.json".format(task_id, test_name)
+        cmd += "rally task results {} > {}.json".format(task_id, test_name)
+>>>>>>> 07070f3e3c1a1e48e65cecf2d80658a03c5887bb:browbeat/rally.py
         return self.tools.run_cmd(cmd)['stdout']
 
     def rally_metadata(self, result, meta):

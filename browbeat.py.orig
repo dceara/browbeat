@@ -24,7 +24,13 @@ from browbeat.workloads import base
 from browbeat.config import load_browbeat_config
 from browbeat.path import results_path
 
-_workload_opts = ['rally', 'shaker', 'rally-ovs']
+<<<<<<< HEAD
+_workload_opts = ['rally', 'shaker']
+||||||| merged common ancestors
+_workload_opts = ['perfkit', 'rally', 'shaker', 'yoda']
+=======
+_workload_opts = ['perfkit', 'rally','rally-ovs', 'shaker', 'yoda']
+>>>>>>> 07070f3e3c1a1e48e65cecf2d80658a03c5887bb
 _config_file = 'browbeat-config.yaml'
 debug_log_file = 'log/debug.log'
 

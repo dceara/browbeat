@@ -358,6 +358,7 @@ workloads:
         elastic_host:
         elastic_port: 9200
         file: rally/rally-plugins/workloads/pbench-uperf.yml
+<<<<<<< HEAD
 
       - name: browbeat-abench
         enabled: true
@@ -376,6 +377,8 @@ workloads:
         concurrency_level: 10
         send_results: true
         file: rally/rally-plugins/workloads/abench.yml
+||||||| merged common ancestors
+=======
 
 # Rally ovs
   - name: plugin-workloads
@@ -395,4 +398,4 @@ workloads:
         network: eth1
         start_cidr: 192.168.33.10/24
         controller: ovn-controller-0
-
+>>>>>>> 07070f3e3c1a1e48e65cecf2d80658a03c5887bb

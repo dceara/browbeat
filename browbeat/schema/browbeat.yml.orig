@@ -142,4 +142,10 @@ mapping:
           type:
             type: str
             required: True
-            enum: ['rally', 'shaker', 'rally-ovs']
+<<<<<<< HEAD
+            enum: ['rally', 'shaker']
+||||||| merged common ancestors
+            enum: ['perfkit', 'rally', 'shaker', 'yoda']
+=======
+            enum: ['perfkit', 'rally', 'rally-ovs', 'shaker', 'yoda']
+>>>>>>> 07070f3e3c1a1e48e65cecf2d80658a03c5887bb
